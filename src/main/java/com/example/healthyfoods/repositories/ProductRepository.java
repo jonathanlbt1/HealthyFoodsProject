@@ -1,13 +1,13 @@
 package com.example.healthyfoods.repositories;
 
-import com.example.healthyfoods.entities.Produto;
+import com.example.healthyfoods.entities.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Produto, Integer> {
+public interface ProductRepository extends CrudRepository<Product, Integer> {
     @Override
-    Optional<Produto> findById(Integer integer);
+    Optional<Product> findById(Integer integer);
 }

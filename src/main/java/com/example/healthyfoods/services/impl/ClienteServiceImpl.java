@@ -1,35 +1,55 @@
 package com.example.healthyfoods.services.impl;
 
 import com.example.healthyfoods.entities.Cliente;
+import com.example.healthyfoods.repositories.ClientRepository;
 import com.example.healthyfoods.services.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
+
+    @Autowired
+    ClientRepository clientRepository;
+
     @Override
     public Cliente novoCliente(Cliente cliente) {
-        return null;
+        Cliente novoCliente = new Cliente();
+        novoCliente.setRazaoCliente(cliente.getRazaoCliente());
+        novoCliente.setFantasiaCliente(cliente.getFantasiaCliente());
+        novoCliente.setBairroCliente(cliente.getBairroCliente());
+        novoCliente.setCepCliente(cliente.getCepCliente());
+        novoCliente.setEndCliente(cliente.getEndCliente());
+        novoCliente.setComplementoCliente(cliente.getComplementoCliente());
+        novoCliente.setFone1Cliente(cliente.getFone1Cliente());
+        novoCliente.setTaxaEntregaCliente(cliente.getTaxaEntregaCliente());
+        novoCliente.setCidade(cliente.getCidade());
+        novoCliente.setEstado(cliente.getEstado());
+        novoCliente.setIdBairro(cliente.getIdBairro());
+        return novoCliente;
     }
 
     @Override
     public ArrayList<Cliente> lerVariosClientes() {
-        return null;
+        return (ArrayList<Cliente>) clientRepository.findAll();
     }
 
     @Override
     public Cliente lerUnicoCliente(Integer idCliente) {
-        return null;
+        return clientRepository.findById(idCliente).get();
     }
 
     @Override
     public Cliente atualizarCliente(Integer idCliente) {
-        return null;
+        var oldCliente = clientRepository.findById(idCliente).get();
+        var novoCliente = novoCliente(oldCliente);
+        return novoCliente;
     }
 
     @Override
     public void deletarCliente(Integer idCliente) {
-
+        clientRepository.deleteById(idCliente);
     }
 }

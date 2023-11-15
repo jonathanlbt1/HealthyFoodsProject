@@ -5,19 +5,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Base64;
+import javax.persistence.*;
 
+@Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Produto {
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idProduto;
 
     private String descProduto;
-    private Integer idProduto;
     private String vendaProduto;
-    private Base64 imageProduto;
-    private Integer idUnidade;
+
+    @Lob
+    private Byte[] imageProduto;
+
+    private Long idUnidade;
     private String descUnidade;
 
 }

@@ -1,6 +1,6 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Produto;
+import com.example.healthyfoods.entities.Product;
 import com.example.healthyfoods.services.ProductService;
 import org.springframework.stereotype.Service;
 
@@ -9,22 +9,22 @@ import java.util.ArrayList;
 @Service
 public class ProductServiceImpl implements ProductService {
     @Override
-    public Produto novoProduto(Produto produto) {
+    public Product novoProduto(Product produto) {
         return null;
     }
 
     @Override
-    public ArrayList<Produto> lerVariosProdutos() {
+    public ArrayList<Product> lerVariosProdutos() {
         return null;
     }
 
     @Override
-    public Produto lerUmProduto(Integer idProduto) {
+    public Product lerUmProduto(Integer idProduto) {
         return null;
     }
 
     @Override
-    public Produto atualizarProduto(Integer idProduto) {
+    public Product atualizarProduto(Integer idProduto) {
         return null;
     }
 
