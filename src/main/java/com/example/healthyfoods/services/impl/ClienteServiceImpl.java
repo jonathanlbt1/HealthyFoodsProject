@@ -3,11 +3,13 @@ package com.example.healthyfoods.services.impl;
 import com.example.healthyfoods.entities.Cliente;
 import com.example.healthyfoods.repositories.ClientRepository;
 import com.example.healthyfoods.services.ClienteService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Slf4j
 @Service
 public class ClienteServiceImpl implements ClienteService {
 

@@ -3,9 +3,11 @@ package com.example.healthyfoods.services.impl;
 import com.example.healthyfoods.entities.SubGrupo;
 import com.example.healthyfoods.repositories.SubGrupoRepository;
 import com.example.healthyfoods.services.SubGrupoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class SubGrupoServiceImpl implements SubGrupoService {
 

@@ -3,11 +3,13 @@ package com.example.healthyfoods.services.impl;
 import com.example.healthyfoods.entities.Product;
 import com.example.healthyfoods.repositories.ProductRepository;
 import com.example.healthyfoods.services.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Slf4j
 @Service
 public class ProductServiceImpl implements ProductService {
 
