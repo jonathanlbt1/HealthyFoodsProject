@@ -1,7 +1,7 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Grupo;
-import com.example.healthyfoods.entities.SubGrupo;
+import com.example.healthyfoods.entities.Grupos;
+import com.example.healthyfoods.entities.Subgrupo;
 import com.example.healthyfoods.repositories.GrupoRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,11 +28,11 @@ class GrupoServiceImplDiffblueTest {
     private GrupoServiceImpl grupoServiceImpl;
 
     /**
-     * Method under test: {@link GrupoServiceImpl#novoGrupo(Grupo)}
+     * Method under test: {@link GrupoServiceImpl#novoGrupo(Grupos)}
      */
     @Test
     void testNovoGrupo() {
-        Grupo grupo = new Grupo();
+        Grupos grupo = new Grupos();
         grupo.setDescGrupo("Desc Grupo");
         grupo.setIdGrupo(1L);
         grupo.setIdImpressora(1L);
@@ -41,7 +41,7 @@ class GrupoServiceImplDiffblueTest {
         grupo.setPedeobsGrupo(1L);
         grupo.setStatusGrupo(1L);
         grupo.setSubGrupos(new ArrayList<>());
-        Grupo actualNovoGrupoResult = grupoServiceImpl.novoGrupo(grupo);
+        Grupos actualNovoGrupoResult = grupoServiceImpl.novoGrupo(grupo);
         assertEquals("Desc Grupo", actualNovoGrupoResult.getDescGrupo());
         assertEquals(1L, actualNovoGrupoResult.getIdImpressora().longValue());
         assertEquals(1L, actualNovoGrupoResult.getOnlineGrupo().longValue());
@@ -51,11 +51,11 @@ class GrupoServiceImplDiffblueTest {
     }
 
     /**
-     * Method under test: {@link GrupoServiceImpl#novoGrupo(Grupo)}
+     * Method under test: {@link GrupoServiceImpl#novoGrupo(Grupos)}
      */
     @Test
     void testNovoGrupo2() {
-        Grupo grupo = mock(Grupo.class);
+        Grupos grupo = mock(Grupos.class);
         when(grupo.getImagemGrupo()).thenReturn(new Byte[]{'A'});
         when(grupo.getIdImpressora()).thenReturn(1L);
         when(grupo.getOnlineGrupo()).thenReturn(1L);
@@ -69,7 +69,7 @@ class GrupoServiceImplDiffblueTest {
         doNothing().when(grupo).setOnlineGrupo(Mockito.<Long>any());
         doNothing().when(grupo).setPedeobsGrupo(Mockito.<Long>any());
         doNothing().when(grupo).setStatusGrupo(Mockito.<Long>any());
-        doNothing().when(grupo).setSubGrupos(Mockito.<List<SubGrupo>>any());
+        doNothing().when(grupo).setSubGrupos(Mockito.<List<Subgrupo>>any());
         grupo.setDescGrupo("Desc Grupo");
         grupo.setIdGrupo(1L);
         grupo.setIdImpressora(1L);
@@ -78,7 +78,7 @@ class GrupoServiceImplDiffblueTest {
         grupo.setPedeobsGrupo(1L);
         grupo.setStatusGrupo(1L);
         grupo.setSubGrupos(new ArrayList<>());
-        Grupo actualNovoGrupoResult = grupoServiceImpl.novoGrupo(grupo);
+        Grupos actualNovoGrupoResult = grupoServiceImpl.novoGrupo(grupo);
         verify(grupo).getDescGrupo();
         verify(grupo).getIdImpressora();
         verify(grupo).getImagemGrupo();
@@ -92,7 +92,7 @@ class GrupoServiceImplDiffblueTest {
         verify(grupo).setOnlineGrupo(Mockito.<Long>any());
         verify(grupo).setPedeobsGrupo(Mockito.<Long>any());
         verify(grupo).setStatusGrupo(Mockito.<Long>any());
-        verify(grupo).setSubGrupos(Mockito.<List<SubGrupo>>any());
+        verify(grupo).setSubGrupos(Mockito.<List<Subgrupo>>any());
         assertEquals("Desc Grupo", actualNovoGrupoResult.getDescGrupo());
         assertEquals(1L, actualNovoGrupoResult.getIdImpressora().longValue());
         assertEquals(1L, actualNovoGrupoResult.getOnlineGrupo().longValue());
@@ -106,7 +106,7 @@ class GrupoServiceImplDiffblueTest {
      */
     @Test
     void testLerUmGrupo() {
-        Grupo grupo = new Grupo();
+        Grupos grupo = new Grupos();
         grupo.setDescGrupo("Desc Grupo");
         grupo.setIdGrupo(1L);
         grupo.setIdImpressora(1L);
@@ -115,9 +115,9 @@ class GrupoServiceImplDiffblueTest {
         grupo.setPedeobsGrupo(1L);
         grupo.setStatusGrupo(1L);
         grupo.setSubGrupos(new ArrayList<>());
-        Optional<Grupo> ofResult = Optional.of(grupo);
+        Optional<Grupos> ofResult = Optional.of(grupo);
         when(grupoRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        Grupo actualLerUmGrupoResult = grupoServiceImpl.lerUmGrupo(1);
+        Grupos actualLerUmGrupoResult = grupoServiceImpl.lerUmGrupo(1);
         verify(grupoRepository).findById(Mockito.<Integer>any());
         assertSame(grupo, actualLerUmGrupoResult);
     }
@@ -127,7 +127,7 @@ class GrupoServiceImplDiffblueTest {
      */
     @Test
     void testAtualizarGrupo() {
-        Grupo grupo = new Grupo();
+        Grupos grupo = new Grupos();
         grupo.setDescGrupo("Desc Grupo");
         grupo.setIdGrupo(1L);
         grupo.setIdImpressora(1L);
@@ -136,9 +136,9 @@ class GrupoServiceImplDiffblueTest {
         grupo.setPedeobsGrupo(1L);
         grupo.setStatusGrupo(1L);
         grupo.setSubGrupos(new ArrayList<>());
-        Optional<Grupo> ofResult = Optional.of(grupo);
+        Optional<Grupos> ofResult = Optional.of(grupo);
         when(grupoRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        Grupo actualAtualizarGrupoResult = grupoServiceImpl.atualizarGrupo(1);
+        Grupos actualAtualizarGrupoResult = grupoServiceImpl.atualizarGrupo(1);
         verify(grupoRepository).findById(Mockito.<Integer>any());
         assertEquals("Desc Grupo", actualAtualizarGrupoResult.getDescGrupo());
         assertEquals(1L, actualAtualizarGrupoResult.getIdImpressora().longValue());

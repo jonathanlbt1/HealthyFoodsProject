@@ -1,6 +1,6 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Product;
+import com.example.healthyfoods.entities.Produtos;
 import com.example.healthyfoods.repositories.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,18 +25,18 @@ class ProductServiceImplDiffblueTest {
     private ProductServiceImpl productServiceImpl;
 
     /**
-     * Method under test: {@link ProductServiceImpl#novoProduto(Product)}
+     * Method under test: {@link ProductServiceImpl#novoProduto(Produtos)}
      */
     @Test
     void testNovoProduto() {
-        Product produto = new Product();
+        Produtos produto = new Produtos();
         produto.setDescProduto("alice.liddell@example.org");
         produto.setDescUnidade("Desc Unidade");
         produto.setIdProduto(1);
         produto.setIdUnidade(1L);
         produto.setImageProduto(new Byte[]{'A'});
         produto.setVendaProduto("alice.liddell@example.org");
-        Product actualNovoProdutoResult = productServiceImpl.novoProduto(produto);
+        Produtos actualNovoProdutoResult = productServiceImpl.novoProduto(produto);
         assertEquals("Desc Unidade", actualNovoProdutoResult.getDescUnidade());
         assertEquals("alice.liddell@example.org", actualNovoProdutoResult.getDescProduto());
         assertEquals("alice.liddell@example.org", actualNovoProdutoResult.getVendaProduto());
@@ -45,11 +45,11 @@ class ProductServiceImplDiffblueTest {
     }
 
     /**
-     * Method under test: {@link ProductServiceImpl#novoProduto(Product)}
+     * Method under test: {@link ProductServiceImpl#novoProduto(Produtos)}
      */
     @Test
     void testNovoProduto2() {
-        Product produto = mock(Product.class);
+        Produtos produto = mock(Produtos.class);
         when(produto.getImageProduto()).thenReturn(new Byte[]{'A'});
         when(produto.getIdUnidade()).thenReturn(1L);
         when(produto.getDescProduto()).thenReturn("alice.liddell@example.org");
@@ -67,7 +67,7 @@ class ProductServiceImplDiffblueTest {
         produto.setIdUnidade(1L);
         produto.setImageProduto(new Byte[]{'A'});
         produto.setVendaProduto("alice.liddell@example.org");
-        Product actualNovoProdutoResult = productServiceImpl.novoProduto(produto);
+        Produtos actualNovoProdutoResult = productServiceImpl.novoProduto(produto);
         verify(produto).getDescProduto();
         verify(produto).getDescUnidade();
         verify(produto).getIdUnidade();
@@ -91,16 +91,16 @@ class ProductServiceImplDiffblueTest {
      */
     @Test
     void testLerUmProduto() {
-        Product product = new Product();
+        Produtos product = new Produtos();
         product.setDescProduto("alice.liddell@example.org");
         product.setDescUnidade("Desc Unidade");
         product.setIdProduto(1);
         product.setIdUnidade(1L);
         product.setImageProduto(new Byte[]{'A'});
         product.setVendaProduto("alice.liddell@example.org");
-        Optional<Product> ofResult = Optional.of(product);
+        Optional<Produtos> ofResult = Optional.of(product);
         when(productRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        Product actualLerUmProdutoResult = productServiceImpl.lerUmProduto(1);
+        Produtos actualLerUmProdutoResult = productServiceImpl.lerUmProduto(1);
         verify(productRepository).findById(Mockito.<Integer>any());
         assertSame(product, actualLerUmProdutoResult);
     }
@@ -110,16 +110,16 @@ class ProductServiceImplDiffblueTest {
      */
     @Test
     void testAtualizarProduto() {
-        Product product = new Product();
+        Produtos product = new Produtos();
         product.setDescProduto("alice.liddell@example.org");
         product.setDescUnidade("Desc Unidade");
         product.setIdProduto(1);
         product.setIdUnidade(1L);
         product.setImageProduto(new Byte[]{'A'});
         product.setVendaProduto("alice.liddell@example.org");
-        Optional<Product> ofResult = Optional.of(product);
+        Optional<Produtos> ofResult = Optional.of(product);
         when(productRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        Product actualAtualizarProdutoResult = productServiceImpl.atualizarProduto(1);
+        Produtos actualAtualizarProdutoResult = productServiceImpl.atualizarProduto(1);
         verify(productRepository).findById(Mockito.<Integer>any());
         assertEquals("Desc Unidade", actualAtualizarProdutoResult.getDescUnidade());
         assertEquals("alice.liddell@example.org", actualAtualizarProdutoResult.getDescProduto());

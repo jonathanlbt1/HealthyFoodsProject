@@ -1,6 +1,6 @@
 package com.example.healthyfoods.controllers;
 
-import com.example.healthyfoods.entities.Cliente;
+import com.example.healthyfoods.entities.Clientes;
 import com.example.healthyfoods.services.ClienteService;
 import com.example.healthyfoods.services.impl.ClienteServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -50,7 +50,7 @@ class ClientControllerDiffblueTest {
     @Test
     void testUpdate() {
 
-        Cliente cliente = new Cliente();
+        Clientes cliente = new Clientes();
         cliente.setBairroCliente("Bairro Cliente");
         cliente.setCepCliente("Cep Cliente");
         cliente.setCidade("Cidade");
@@ -71,11 +71,11 @@ class ClientControllerDiffblueTest {
     }
 
     /**
-     * Method under test: {@link ClientController#save(Cliente)}
+     * Method under test: {@link ClientController#save(Clientes)}
      */
     @Test
     void testSave() throws Exception {
-        Cliente cliente = new Cliente();
+        Clientes cliente = new Clientes();
         cliente.setBairroCliente("Bairro Cliente");
         cliente.setCepCliente("Cep Cliente");
         cliente.setCidade("Cidade");
@@ -88,7 +88,7 @@ class ClientControllerDiffblueTest {
         cliente.setNumCliente("Num Cliente");
         cliente.setRazaoCliente("Razao Cliente");
         cliente.setTaxaEntregaCliente("Taxa Entrega Cliente");
-        when(clienteService.novoCliente(Mockito.<Cliente>any())).thenReturn(cliente);
+        when(clienteService.novoCliente(Mockito.<Clientes>any())).thenReturn(cliente);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/cliente");
         MockMvcBuilders.standaloneSetup(clientController)
                 .build()
@@ -105,7 +105,7 @@ class ClientControllerDiffblueTest {
      */
     @Test
     void testShowById() throws Exception {
-        Cliente cliente = new Cliente();
+        Clientes cliente = new Clientes();
         cliente.setBairroCliente("Bairro Cliente");
         cliente.setCepCliente("Cep Cliente");
         cliente.setCidade("Cidade");

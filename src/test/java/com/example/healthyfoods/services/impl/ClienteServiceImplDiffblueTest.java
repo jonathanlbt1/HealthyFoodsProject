@@ -1,6 +1,6 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Cliente;
+import com.example.healthyfoods.entities.Clientes;
 import com.example.healthyfoods.repositories.ClientRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,11 +25,11 @@ class ClienteServiceImplDiffblueTest {
     private ClienteServiceImpl clienteServiceImpl;
 
     /**
-     * Method under test: {@link ClienteServiceImpl#novoCliente(Cliente)}
+     * Method under test: {@link ClienteServiceImpl#novoCliente(Clientes)}
      */
     @Test
     void testNovoCliente() {
-        Cliente cliente = new Cliente();
+        Clientes cliente = new Clientes();
         cliente.setBairroCliente("Bairro Cliente");
         cliente.setCepCliente("Cep Cliente");
         cliente.setCidade("Cidade");
@@ -42,7 +42,7 @@ class ClienteServiceImplDiffblueTest {
         cliente.setNumCliente("Num Cliente");
         cliente.setRazaoCliente("Razao Cliente");
         cliente.setTaxaEntregaCliente("Taxa Entrega Cliente");
-        Cliente actualNovoClienteResult = clienteServiceImpl.novoCliente(cliente);
+        Clientes actualNovoClienteResult = clienteServiceImpl.novoCliente(cliente);
         assertEquals("Bairro Cliente", actualNovoClienteResult.getBairroCliente());
         assertEquals("Cep Cliente", actualNovoClienteResult.getCepCliente());
         assertEquals("Cidade", actualNovoClienteResult.getCidade());
@@ -57,11 +57,11 @@ class ClienteServiceImplDiffblueTest {
     }
 
     /**
-     * Method under test: {@link ClienteServiceImpl#novoCliente(Cliente)}
+     * Method under test: {@link ClienteServiceImpl#novoCliente(Clientes)}
      */
     @Test
     void testNovoCliente2() {
-        Cliente cliente = mock(Cliente.class);
+        Clientes cliente = mock(Clientes.class);
         when(cliente.getBairroCliente()).thenReturn("Bairro Cliente");
         when(cliente.getCepCliente()).thenReturn("Cep Cliente");
         when(cliente.getCidade()).thenReturn("Cidade");
@@ -97,7 +97,7 @@ class ClienteServiceImplDiffblueTest {
         cliente.setNumCliente("Num Cliente");
         cliente.setRazaoCliente("Razao Cliente");
         cliente.setTaxaEntregaCliente("Taxa Entrega Cliente");
-        Cliente actualNovoClienteResult = clienteServiceImpl.novoCliente(cliente);
+        Clientes actualNovoClienteResult = clienteServiceImpl.novoCliente(cliente);
         verify(cliente).getBairroCliente();
         verify(cliente).getCepCliente();
         verify(cliente).getCidade();
@@ -139,7 +139,7 @@ class ClienteServiceImplDiffblueTest {
      */
     @Test
     void testLerUnicoCliente() {
-        Cliente cliente = new Cliente();
+        Clientes cliente = new Clientes();
         cliente.setBairroCliente("Bairro Cliente");
         cliente.setCepCliente("Cep Cliente");
         cliente.setCidade("Cidade");
@@ -152,9 +152,9 @@ class ClienteServiceImplDiffblueTest {
         cliente.setNumCliente("Num Cliente");
         cliente.setRazaoCliente("Razao Cliente");
         cliente.setTaxaEntregaCliente("Taxa Entrega Cliente");
-        Optional<Cliente> ofResult = Optional.of(cliente);
+        Optional<Clientes> ofResult = Optional.of(cliente);
         when(clientRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        Cliente actualLerUnicoClienteResult = clienteServiceImpl.lerUnicoCliente(1);
+        Clientes actualLerUnicoClienteResult = clienteServiceImpl.lerUnicoCliente(1);
         verify(clientRepository).findById(Mockito.<Integer>any());
         assertSame(cliente, actualLerUnicoClienteResult);
     }
@@ -164,7 +164,7 @@ class ClienteServiceImplDiffblueTest {
      */
     @Test
     void testAtualizarCliente() {
-        Cliente cliente = new Cliente();
+        Clientes cliente = new Clientes();
         cliente.setBairroCliente("Bairro Cliente");
         cliente.setCepCliente("Cep Cliente");
         cliente.setCidade("Cidade");
@@ -177,9 +177,9 @@ class ClienteServiceImplDiffblueTest {
         cliente.setNumCliente("Num Cliente");
         cliente.setRazaoCliente("Razao Cliente");
         cliente.setTaxaEntregaCliente("Taxa Entrega Cliente");
-        Optional<Cliente> ofResult = Optional.of(cliente);
+        Optional<Clientes> ofResult = Optional.of(cliente);
         when(clientRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        Cliente actualAtualizarClienteResult = clienteServiceImpl.atualizarCliente(1);
+        Clientes actualAtualizarClienteResult = clienteServiceImpl.atualizarCliente(1);
         verify(clientRepository).findById(Mockito.<Integer>any());
         assertEquals("Bairro Cliente", actualAtualizarClienteResult.getBairroCliente());
         assertEquals("Cep Cliente", actualAtualizarClienteResult.getCepCliente());
@@ -199,7 +199,7 @@ class ClienteServiceImplDiffblueTest {
      */
     @Test
     void testAtualizarCliente2() {
-        Cliente cliente = mock(Cliente.class);
+        Clientes cliente = mock(Clientes.class);
         when(cliente.getBairroCliente()).thenReturn("Bairro Cliente");
         when(cliente.getCepCliente()).thenReturn("Cep Cliente");
         when(cliente.getCidade()).thenReturn("Cidade");
@@ -235,9 +235,9 @@ class ClienteServiceImplDiffblueTest {
         cliente.setNumCliente("Num Cliente");
         cliente.setRazaoCliente("Razao Cliente");
         cliente.setTaxaEntregaCliente("Taxa Entrega Cliente");
-        Optional<Cliente> ofResult = Optional.of(cliente);
+        Optional<Clientes> ofResult = Optional.of(cliente);
         when(clientRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        Cliente actualAtualizarClienteResult = clienteServiceImpl.atualizarCliente(1);
+        Clientes actualAtualizarClienteResult = clienteServiceImpl.atualizarCliente(1);
         verify(cliente).getBairroCliente();
         verify(cliente).getCepCliente();
         verify(cliente).getCidade();

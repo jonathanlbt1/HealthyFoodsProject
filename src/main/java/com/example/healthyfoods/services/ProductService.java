@@ -1,15 +1,15 @@
 package com.example.healthyfoods.services;
 
-import com.example.healthyfoods.entities.Product;
+import com.example.healthyfoods.entities.Produtos;
 
 import java.util.ArrayList;
 
 public interface ProductService {
 
-    Product novoProduto(Product produto);
-    ArrayList<Product> lerVariosProdutos();
-    Product lerUmProduto(Integer idProduto);
-    Product atualizarProduto(Integer idProduto);
+    Produtos novoProduto(Produtos produto);
+    ArrayList<Produtos> lerVariosProdutos();
+    Produtos lerUmProduto(Integer idProduto);
+    Produtos atualizarProduto(Integer idProduto);
     void deletarProduto(Integer idProduto);
 
 }

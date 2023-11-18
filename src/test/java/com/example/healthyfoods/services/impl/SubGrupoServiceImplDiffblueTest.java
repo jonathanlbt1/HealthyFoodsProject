@@ -7,8 +7,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.example.healthyfoods.entities.Grupo;
-import com.example.healthyfoods.entities.SubGrupo;
+import com.example.healthyfoods.entities.Grupos;
+import com.example.healthyfoods.entities.Subgrupo;
 import com.example.healthyfoods.repositories.SubGrupoRepository;
 
 import java.util.ArrayList;
@@ -32,11 +32,11 @@ class SubGrupoServiceImplDiffblueTest {
     private SubGrupoServiceImpl subGrupoServiceImpl;
 
     /**
-     * Method under test: {@link SubGrupoServiceImpl#novoSubgrupo(SubGrupo)}
+     * Method under test: {@link SubGrupoServiceImpl#novoSubgrupo(Subgrupo)}
      */
     @Test
     void testNovoSubgrupo() {
-        Grupo group = new Grupo();
+        Grupos group = new Grupos();
         group.setDescGrupo("Desc Grupo");
         group.setIdGrupo(1L);
         group.setIdImpressora(1L);
@@ -46,14 +46,14 @@ class SubGrupoServiceImplDiffblueTest {
         group.setStatusGrupo(1L);
         group.setSubGrupos(new ArrayList<>());
 
-        SubGrupo subgrupo = new SubGrupo();
+        Subgrupo subgrupo = new Subgrupo();
         subgrupo.setDescSubgrupo("Desc Subgrupo");
         subgrupo.setGroup(group);
         subgrupo.setIdCadImpressora(1L);
         subgrupo.setIdGrupo(1L);
         subgrupo.setIdSubgrupo(1L);
         subgrupo.setStatusSubgrupo(1L);
-        SubGrupo actualNovoSubgrupoResult = subGrupoServiceImpl.novoSubgrupo(subgrupo);
+        Subgrupo actualNovoSubgrupoResult = subGrupoServiceImpl.novoSubgrupo(subgrupo);
         assertEquals("Desc Subgrupo", actualNovoSubgrupoResult.getDescSubgrupo());
         assertEquals(1L, actualNovoSubgrupoResult.getIdCadImpressora().longValue());
         assertEquals(1L, actualNovoSubgrupoResult.getIdGrupo().longValue());
@@ -61,11 +61,11 @@ class SubGrupoServiceImplDiffblueTest {
     }
 
     /**
-     * Method under test: {@link SubGrupoServiceImpl#novoSubgrupo(SubGrupo)}
+     * Method under test: {@link SubGrupoServiceImpl#novoSubgrupo(Subgrupo)}
      */
     @Test
     void testNovoSubgrupo2() {
-        Grupo group = new Grupo();
+        Grupos group = new Grupos();
         group.setDescGrupo("Desc Grupo");
         group.setIdGrupo(1L);
         group.setIdImpressora(1L);
@@ -74,13 +74,13 @@ class SubGrupoServiceImplDiffblueTest {
         group.setPedeobsGrupo(1L);
         group.setStatusGrupo(1L);
         group.setSubGrupos(new ArrayList<>());
-        SubGrupo subgrupo = mock(SubGrupo.class);
+        Subgrupo subgrupo = mock(Subgrupo.class);
         when(subgrupo.getIdCadImpressora()).thenReturn(1L);
         when(subgrupo.getIdGrupo()).thenReturn(1L);
         when(subgrupo.getStatusSubgrupo()).thenReturn(1L);
         when(subgrupo.getDescSubgrupo()).thenReturn("Desc Subgrupo");
         doNothing().when(subgrupo).setDescSubgrupo(Mockito.<String>any());
-        doNothing().when(subgrupo).setGroup(Mockito.<Grupo>any());
+        doNothing().when(subgrupo).setGroup(Mockito.<Grupos>any());
         doNothing().when(subgrupo).setIdCadImpressora(Mockito.<Long>any());
         doNothing().when(subgrupo).setIdGrupo(Mockito.<Long>any());
         doNothing().when(subgrupo).setIdSubgrupo(Mockito.<Long>any());
@@ -91,13 +91,13 @@ class SubGrupoServiceImplDiffblueTest {
         subgrupo.setIdGrupo(1L);
         subgrupo.setIdSubgrupo(1L);
         subgrupo.setStatusSubgrupo(1L);
-        SubGrupo actualNovoSubgrupoResult = subGrupoServiceImpl.novoSubgrupo(subgrupo);
+        Subgrupo actualNovoSubgrupoResult = subGrupoServiceImpl.novoSubgrupo(subgrupo);
         verify(subgrupo).getDescSubgrupo();
         verify(subgrupo).getIdCadImpressora();
         verify(subgrupo).getIdGrupo();
         verify(subgrupo).getStatusSubgrupo();
         verify(subgrupo).setDescSubgrupo(Mockito.<String>any());
-        verify(subgrupo).setGroup(Mockito.<Grupo>any());
+        verify(subgrupo).setGroup(Mockito.<Grupos>any());
         verify(subgrupo).setIdCadImpressora(Mockito.<Long>any());
         verify(subgrupo).setIdGrupo(Mockito.<Long>any());
         verify(subgrupo).setIdSubgrupo(Mockito.<Long>any());
@@ -113,7 +113,7 @@ class SubGrupoServiceImplDiffblueTest {
      */
     @Test
     void testLerUmSubgrupo() {
-        Grupo group = new Grupo();
+        Grupos group = new Grupos();
         group.setDescGrupo("Desc Grupo");
         group.setIdGrupo(1L);
         group.setIdImpressora(1L);
@@ -123,16 +123,16 @@ class SubGrupoServiceImplDiffblueTest {
         group.setStatusGrupo(1L);
         group.setSubGrupos(new ArrayList<>());
 
-        SubGrupo subGrupo = new SubGrupo();
+        Subgrupo subGrupo = new Subgrupo();
         subGrupo.setDescSubgrupo("Desc Subgrupo");
         subGrupo.setGroup(group);
         subGrupo.setIdCadImpressora(1L);
         subGrupo.setIdGrupo(1L);
         subGrupo.setIdSubgrupo(1L);
         subGrupo.setStatusSubgrupo(1L);
-        Optional<SubGrupo> ofResult = Optional.of(subGrupo);
+        Optional<Subgrupo> ofResult = Optional.of(subGrupo);
         when(subGrupoRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        SubGrupo actualLerUmSubgrupoResult = subGrupoServiceImpl.lerUmSubgrupo(1);
+        Subgrupo actualLerUmSubgrupoResult = subGrupoServiceImpl.lerUmSubgrupo(1);
         verify(subGrupoRepository).findById(Mockito.<Integer>any());
         assertSame(subGrupo, actualLerUmSubgrupoResult);
     }
@@ -142,7 +142,7 @@ class SubGrupoServiceImplDiffblueTest {
      */
     @Test
     void testAtualizarSubgrupo() {
-        Grupo group = new Grupo();
+        Grupos group = new Grupos();
         group.setDescGrupo("Desc Grupo");
         group.setIdGrupo(1L);
         group.setIdImpressora(1L);
@@ -152,16 +152,16 @@ class SubGrupoServiceImplDiffblueTest {
         group.setStatusGrupo(1L);
         group.setSubGrupos(new ArrayList<>());
 
-        SubGrupo subGrupo = new SubGrupo();
+        Subgrupo subGrupo = new Subgrupo();
         subGrupo.setDescSubgrupo("Desc Subgrupo");
         subGrupo.setGroup(group);
         subGrupo.setIdCadImpressora(1L);
         subGrupo.setIdGrupo(1L);
         subGrupo.setIdSubgrupo(1L);
         subGrupo.setStatusSubgrupo(1L);
-        Optional<SubGrupo> ofResult = Optional.of(subGrupo);
+        Optional<Subgrupo> ofResult = Optional.of(subGrupo);
         when(subGrupoRepository.findById(Mockito.<Integer>any())).thenReturn(ofResult);
-        SubGrupo actualAtualizarSubgrupoResult = subGrupoServiceImpl.atualizarSubgrupo(1);
+        Subgrupo actualAtualizarSubgrupoResult = subGrupoServiceImpl.atualizarSubgrupo(1);
         verify(subGrupoRepository).findById(Mockito.<Integer>any());
         assertEquals("Desc Subgrupo", actualAtualizarSubgrupoResult.getDescSubgrupo());
         assertEquals(1L, actualAtualizarSubgrupoResult.getIdCadImpressora().longValue());

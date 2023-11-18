@@ -1,6 +1,6 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Product;
+import com.example.healthyfoods.entities.Produtos;
 import com.example.healthyfoods.repositories.ProductRepository;
 import com.example.healthyfoods.services.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +17,8 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     @Override
-    public Product novoProduto(Product produto) {
-        Product novoProduto = new Product();
+    public Produtos novoProduto(Produtos produto) {
+        Produtos novoProduto = new Produtos();
         novoProduto.setDescProduto(produto.getDescProduto());
         novoProduto.setVendaProduto(produto.getVendaProduto());
         novoProduto.setImageProduto(produto.getImageProduto());
@@ -28,17 +28,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ArrayList<Product> lerVariosProdutos() {
-        return (ArrayList<Product>) productRepository.findAll();
+    public ArrayList<Produtos> lerVariosProdutos() {
+        return (ArrayList<Produtos>) productRepository.findAll();
     }
 
     @Override
-    public Product lerUmProduto(Integer idProduto) {
+    public Produtos lerUmProduto(Integer idProduto) {
         return productRepository.findById(idProduto).get();
     }
 
     @Override
-    public Product atualizarProduto(Integer idProduto) {
+    public Produtos atualizarProduto(Integer idProduto) {
         var oldProduto = productRepository.findById(idProduto).get();
         var novoProduto = novoProduto(oldProduto);
         return novoProduto;

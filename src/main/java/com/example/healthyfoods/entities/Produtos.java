@@ -12,19 +12,26 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+@Table(schema = "public", name = "produtos")
+public class Produtos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProduto;
 
+    @Column(name = "desc_produto")
     private String descProduto;
+
+    @Column(name = "venda_produto")
     private String vendaProduto;
 
-    @Lob
+    @Column(name = "image_produto")
     private Byte[] imageProduto;
 
+    @Column(name = "id_unidade")
     private Long idUnidade;
+
+    @Column(name = "desc_unidade")
     private String descUnidade;
 
 }

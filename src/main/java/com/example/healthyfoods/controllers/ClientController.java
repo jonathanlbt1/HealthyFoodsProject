@@ -1,6 +1,6 @@
 package com.example.healthyfoods.controllers;
 
-import com.example.healthyfoods.entities.Cliente;
+import com.example.healthyfoods.entities.Clientes;
 import com.example.healthyfoods.services.ClienteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -25,15 +25,15 @@ public class ClientController {
     }
 
     @PostMapping("cliente")
-    public String save(@ModelAttribute Cliente cliente){
-        Cliente cliente1 = clienteService.novoCliente(cliente);
+    public String save(@ModelAttribute Clientes cliente){
+        Clientes cliente1 = clienteService.novoCliente(cliente);
 
         return "redirect:/cliente/" + cliente1.getIdCliente() + "/show";
     }
 
     @PutMapping("cliente")
     public String update(@ModelAttribute Integer id){
-        Cliente cliente1 = clienteService.atualizarCliente(id);
+        Clientes cliente1 = clienteService.atualizarCliente(id);
 
         return "redirect:/cliente/" + cliente1.getIdCliente() + "/show";
     }

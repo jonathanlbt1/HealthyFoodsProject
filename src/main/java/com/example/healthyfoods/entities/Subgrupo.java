@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SubGrupo {
+@Table(schema = "public", name = "subgrupo")
+public class Subgrupo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +24,5 @@ public class SubGrupo {
 
     @ManyToOne
     @JoinColumn(name = "group_id_grupo")
-    private Grupo group;
+    private Grupos group;
 }

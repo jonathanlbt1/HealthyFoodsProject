@@ -1,6 +1,6 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Cliente;
+import com.example.healthyfoods.entities.Clientes;
 import com.example.healthyfoods.repositories.ClientRepository;
 import com.example.healthyfoods.services.ClienteService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +17,8 @@ public class ClienteServiceImpl implements ClienteService {
     ClientRepository clientRepository;
 
     @Override
-    public Cliente novoCliente(Cliente cliente) {
-        Cliente novoCliente = new Cliente();
+    public Clientes novoCliente(Clientes cliente) {
+        Clientes novoCliente = new Clientes();
         novoCliente.setRazaoCliente(cliente.getRazaoCliente());
         novoCliente.setFantasiaCliente(cliente.getFantasiaCliente());
         novoCliente.setBairroCliente(cliente.getBairroCliente());
@@ -34,17 +34,17 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public ArrayList<Cliente> lerVariosClientes() {
-        return (ArrayList<Cliente>) clientRepository.findAll();
+    public ArrayList<Clientes> lerVariosClientes() {
+        return (ArrayList<Clientes>) clientRepository.findAll();
     }
 
     @Override
-    public Cliente lerUnicoCliente(Integer idCliente) {
+    public Clientes lerUnicoCliente(Integer idCliente) {
         return clientRepository.findById(idCliente).get();
     }
 
     @Override
-    public Cliente atualizarCliente(Integer idCliente) {
+    public Clientes atualizarCliente(Integer idCliente) {
         var oldCliente = clientRepository.findById(idCliente).get();
         var novoCliente = novoCliente(oldCliente);
         return novoCliente;

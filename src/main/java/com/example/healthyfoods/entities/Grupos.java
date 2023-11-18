@@ -8,26 +8,35 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
 @Builder
+@RequiredArgsConstructor
 @AllArgsConstructor
-public class Grupo {
+@Table(schema = "public", name = "grupos")
+public class Grupos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGrupo;
 
+    @Column(name = "desc_grupo")
     private String descGrupo;
+
+    @Column(name = "id_impressora")
     private Long idImpressora;
+
+    @Column(name = "pedeobs_grupo")
     private Long pedeobsGrupo;
+
+    @Column(name = "status_grupo")
     private Long statusGrupo;
+
+    @Column(name = "online_grupo")
     private Long onlineGrupo;
 
-    @Lob
+    @Column(name = "imagem_grupo")
     private Byte[] imagemGrupo;
 
     @OneToMany(mappedBy = "idGrupo")
-    private List<SubGrupo> subGrupos;
+    private List<Subgrupo> subGrupos;
 
 }
