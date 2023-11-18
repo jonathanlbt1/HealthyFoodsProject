@@ -1,15 +1,16 @@
 package com.example.healthyfoods.services;
 
-import com.example.healthyfoods.entities.Clientes;
+import com.example.healthyfoods.entities.Cliente;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public interface ClienteService {
 
-    Clientes novoCliente(Clientes cliente);
-    ArrayList<Clientes> lerVariosClientes();
-    Clientes lerUnicoCliente(Integer idCliente);
-    Clientes atualizarCliente(Integer idCliente);
-    void deletarCliente(Integer idCliente);
+    Cliente salvarCliente(Cliente cliente);
+    List<Cliente> listarClientes();
+    Optional<Cliente> buscarClientePorId(Long idCliente);
+    Cliente atualizarCliente(Long idCliente, Cliente novoCliente);
+    void deletarCliente(Long idCliente);
 
 }

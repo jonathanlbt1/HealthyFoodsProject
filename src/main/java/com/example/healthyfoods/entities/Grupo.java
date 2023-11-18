@@ -9,13 +9,14 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@RequiredArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "public", name = "grupos")
-public class Grupos {
+@Table(schema = "public", name = "grupo")
+public class Grupo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_grupo")
     private Long idGrupo;
 
     @Column(name = "desc_grupo")
@@ -36,7 +37,7 @@ public class Grupos {
     @Column(name = "imagem_grupo")
     private Byte[] imagemGrupo;
 
-    @OneToMany(mappedBy = "idGrupo")
+    @OneToMany(mappedBy = "idGrupo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Subgrupo> subGrupos;
 
 }

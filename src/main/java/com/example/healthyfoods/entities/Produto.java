@@ -1,23 +1,22 @@
 package com.example.healthyfoods.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "public", name = "produtos")
-public class Produtos {
+@Table(schema = "public", name = "produto")
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProduto;
+    @Column(name = "id_produto")
+    private Long idProduto;
 
     @Column(name = "desc_produto")
     private String descProduto;
@@ -25,7 +24,7 @@ public class Produtos {
     @Column(name = "venda_produto")
     private String vendaProduto;
 
-    @Column(name = "image_produto")
+    @Column(name = "imagem_produto")
     private Byte[] imageProduto;
 
     @Column(name = "id_unidade")

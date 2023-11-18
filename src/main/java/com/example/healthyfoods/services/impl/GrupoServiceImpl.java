@@ -1,45 +1,58 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Grupos;
+import com.example.healthyfoods.entities.Grupo;
 import com.example.healthyfoods.repositories.GrupoRepository;
 import com.example.healthyfoods.services.GrupoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
+@Transactional
 public class GrupoServiceImpl implements GrupoService {
 
-    @Autowired
-    GrupoRepository grupoRepository;
+    @Autowired GrupoRepository grupoRepository;
     @Override
-    public Grupos novoGrupo(Grupos grupo) {
-        Grupos novoGrupo = new Grupos();
-        novoGrupo.setDescGrupo(grupo.getDescGrupo());
-        novoGrupo.setStatusGrupo(grupo.getStatusGrupo());
-        novoGrupo.setIdImpressora(grupo.getIdImpressora());
-        novoGrupo.setImagemGrupo(grupo.getImagemGrupo());
-        novoGrupo.setOnlineGrupo(grupo.getOnlineGrupo());
-        novoGrupo.setSubGrupos(grupo.getSubGrupos());
-        novoGrupo.setStatusGrupo(grupo.getStatusGrupo());
-        return novoGrupo;
+    public Grupo salvarGrupo(Grupo grupo) {
+        return grupoRepository.save(grupo);
     }
 
     @Override
-    public Grupos lerUmGrupo(Integer idGrupo) {
-        return grupoRepository.findById(idGrupo).get();
+    public List<Grupo> listarGrupos() {
+        return grupoRepository.findAll();
     }
 
     @Override
-    public Grupos atualizarGrupo(Integer idGrupo) {
-        var oldGrupo = grupoRepository.findById(idGrupo).get();
-        var novoGrupo = novoGrupo(oldGrupo);
-        return novoGrupo;
+    public Optional<Grupo> buscarGrupoPorId(Long idGrupo) {
+        return grupoRepository.findById(idGrupo);
     }
 
     @Override
-    public void deletarGrupo(Integer idGrupo) {
+    public Grupo atualizarGrupo(Long idGrupo, Grupo novoGrupo) {
+        Optional<Grupo> grupoExistente = grupoRepository.findById(idGrupo);
+
+        if (grupoExistente.isPresent()) {
+            Grupo grupoAtualizado = grupoExistente.get();
+            grupoAtualizado.setDescGrupo(novoGrupo.getDescGrupo());
+            grupoAtualizado.setIdImpressora(novoGrupo.getIdImpressora());
+            grupoAtualizado.setPedeobsGrupo(novoGrupo.getPedeobsGrupo());
+            grupoAtualizado.setStatusGrupo(novoGrupo.getStatusGrupo());
+            grupoAtualizado.setOnlineGrupo(novoGrupo.getOnlineGrupo());
+            grupoAtualizado.setImagemGrupo(novoGrupo.getImagemGrupo());
+
+            return grupoRepository.save(grupoAtualizado);
+        } else {
+            throw new RuntimeException("Grupo não encontrado");
+        }
+    }
+
+    @Override
+    public void deletarGrupo(Long idGrupo) {
         grupoRepository.deleteById(idGrupo);
     }
 }

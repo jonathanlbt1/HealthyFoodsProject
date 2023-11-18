@@ -1,14 +1,13 @@
 package com.example.healthyfoods.repositories;
 
-import com.example.healthyfoods.entities.Clientes;
-import org.springframework.data.repository.CrudRepository;
+import com.example.healthyfoods.entities.Cliente;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface ClientRepository extends CrudRepository<Clientes, Integer> {
-
+public interface ClientRepository extends JpaRepository<Cliente, Long> {
     @Override
-    Optional<Clientes> findById(Integer integer);
+    Optional<Cliente> findById(Long integer);
 }

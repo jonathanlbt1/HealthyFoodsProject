@@ -1,13 +1,12 @@
 package com.example.healthyfoods.repositories;
 
-import com.example.healthyfoods.entities.Grupo;
+import com.example.healthyfoods.entities.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
 @Repository
-public interface GrupoRepository extends JpaRepository<Grupo, Long> {
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     @Override
-    Optional<Grupo> findById(Long integer);
+    Optional<Produto> findById(Long integer);
 }

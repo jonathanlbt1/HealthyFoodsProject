@@ -1,57 +1,65 @@
 package com.example.healthyfoods.services.impl;
 
-import com.example.healthyfoods.entities.Clientes;
+import com.example.healthyfoods.entities.Cliente;
 import com.example.healthyfoods.repositories.ClientRepository;
 import com.example.healthyfoods.services.ClienteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
+@Transactional
 public class ClienteServiceImpl implements ClienteService {
 
-    @Autowired
-    ClientRepository clientRepository;
+    @Autowired ClientRepository clienteRepository;
 
     @Override
-    public Clientes novoCliente(Clientes cliente) {
-        Clientes novoCliente = new Clientes();
-        novoCliente.setRazaoCliente(cliente.getRazaoCliente());
-        novoCliente.setFantasiaCliente(cliente.getFantasiaCliente());
-        novoCliente.setBairroCliente(cliente.getBairroCliente());
-        novoCliente.setCepCliente(cliente.getCepCliente());
-        novoCliente.setEndCliente(cliente.getEndCliente());
-        novoCliente.setComplementoCliente(cliente.getComplementoCliente());
-        novoCliente.setFone1Cliente(cliente.getFone1Cliente());
-        novoCliente.setTaxaEntregaCliente(cliente.getTaxaEntregaCliente());
-        novoCliente.setCidade(cliente.getCidade());
-        novoCliente.setEstado(cliente.getEstado());
-        novoCliente.setIdBairro(cliente.getIdBairro());
-        return novoCliente;
+    public Cliente salvarCliente(Cliente cliente) {
+        return clienteRepository.save(cliente);
     }
 
     @Override
-    public ArrayList<Clientes> lerVariosClientes() {
-        return (ArrayList<Clientes>) clientRepository.findAll();
+    public List<Cliente> listarClientes() {
+        return clienteRepository.findAll();
     }
 
     @Override
-    public Clientes lerUnicoCliente(Integer idCliente) {
-        return clientRepository.findById(idCliente).get();
+    public Optional<Cliente> buscarClientePorId(Long idCliente) {
+        return clienteRepository.findById(idCliente);
     }
 
     @Override
-    public Clientes atualizarCliente(Integer idCliente) {
-        var oldCliente = clientRepository.findById(idCliente).get();
-        var novoCliente = novoCliente(oldCliente);
-        return novoCliente;
+    public Cliente atualizarCliente(Long idCliente, Cliente novoCliente ) {
+        Optional<Cliente> clienteExistente = clienteRepository.findById(idCliente);
+
+        if (clienteExistente.isPresent()) {
+            Cliente clienteAtualizado = clienteExistente.get();
+            clienteAtualizado.setCidade(novoCliente.getCidade());
+            clienteAtualizado.setEstado(novoCliente.getEstado());
+            clienteAtualizado.setRazaoCliente(novoCliente.getRazaoCliente());
+            clienteAtualizado.setFantasiaCliente(novoCliente.getFantasiaCliente());
+            clienteAtualizado.setTaxaEntregaCliente(novoCliente.getTaxaEntregaCliente());
+            clienteAtualizado.setIdBairro(novoCliente.getIdBairro());
+            clienteAtualizado.setEndCliente(novoCliente.getEndCliente());
+            clienteAtualizado.setNumCliente(novoCliente.getNumCliente());
+            clienteAtualizado.setComplementoCliente(novoCliente.getComplementoCliente());
+            clienteAtualizado.setBairroCliente(novoCliente.getBairroCliente());
+            clienteAtualizado.setFone1Cliente(novoCliente.getFone1Cliente());
+            clienteAtualizado.setCepCliente(novoCliente.getCepCliente());
+
+            return clienteRepository.save(clienteAtualizado);
+        } else {
+            throw new RuntimeException("Cliente não encontrado");
+        }
     }
 
     @Override
-    public void deletarCliente(Integer idCliente) {
-        clientRepository.deleteById(idCliente);
+    public void deletarCliente(Long idCliente) {
+        clienteRepository.deleteById(idCliente);
     }
 }
