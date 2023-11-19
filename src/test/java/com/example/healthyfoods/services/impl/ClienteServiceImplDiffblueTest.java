@@ -1,7 +1,7 @@
 package com.example.healthyfoods.services.impl;
 
 import com.example.healthyfoods.entities.Cliente;
-import com.example.healthyfoods.repositories.ClientRepository;
+import com.example.healthyfoods.repositories.ClienteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(SpringExtension.class)
 class ClienteServiceImplDiffblueTest {
     @MockBean
-    private ClientRepository clientRepository;
+    private ClienteRepository clientRepository;
 
     @Autowired
     private ClienteServiceImpl clienteServiceImpl;

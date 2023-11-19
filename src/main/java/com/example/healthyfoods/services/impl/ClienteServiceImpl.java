@@ -1,7 +1,7 @@
 package com.example.healthyfoods.services.impl;
 
 import com.example.healthyfoods.entities.Cliente;
-import com.example.healthyfoods.repositories.ClientRepository;
+import com.example.healthyfoods.repositories.ClienteRepository;
 import com.example.healthyfoods.services.ClienteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,8 @@ import java.util.Optional;
 @Transactional
 public class ClienteServiceImpl implements ClienteService {
 
-    @Autowired ClientRepository clienteRepository;
+    @Autowired
+    ClienteRepository clienteRepository;
 
     @Override
     public Cliente salvarCliente(Cliente cliente) {
