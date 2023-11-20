@@ -1,19 +1,13 @@
 package com.example.healthyfoods.controllers;
 
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-
 import com.example.healthyfoods.entities.Cliente;
 import com.example.healthyfoods.services.impl.ClienteServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.util.ArrayList;
-import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,6 +18,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+
+@SpringBootTest
 @ContextConfiguration(classes = {ClienteController.class})
 @ExtendWith(SpringExtension.class)
 class ClienteControllerDiffblueTest {

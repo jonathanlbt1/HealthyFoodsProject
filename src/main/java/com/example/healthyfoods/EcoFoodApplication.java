@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication(scanBasePackages = {"com.example.healthyfoods"})
-public class HealthyFoodsApplication {
+public class EcoFoodApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HealthyFoodsApplication.class, args);
+        SpringApplication.run(EcoFoodApplication.class, args);
     }
 
 }
